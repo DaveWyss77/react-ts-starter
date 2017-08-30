@@ -22,7 +22,7 @@ const istate: AppStateType = {
 
 export const initialState = Immutable.from(istate);
 
-const appReducer = (state = initialState, action: ActionType<string | LocaleEnum>): AppStateType => {
+const appReducer = (state = initialState, action: ActionType<{}>): AppStateType => {
   switch (action.type) {
 
     case SWITCH_LANGUAGE:

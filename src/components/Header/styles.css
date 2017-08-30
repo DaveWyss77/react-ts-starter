@@ -9,7 +9,7 @@
   left: 0;
   outline: 0;
   width: 100%;
-  background-color: var(--main-white);
+  background-color: var(--main-orange);
   box-shadow: 0 0 5px rgba(0, 0, 0, .33);
   color: var(--border-gray);
   height: var(--header-height);

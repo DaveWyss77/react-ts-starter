@@ -49,7 +49,7 @@ export class Root extends React.Component<Props & DispatchProps> {
         </h1>
         <h2>{this.props.counter}</h2>
         <button onClick={this.props.incrementCounter}>
-          Change counter
+          Increment Counter
         </button>
       </div>
     );
