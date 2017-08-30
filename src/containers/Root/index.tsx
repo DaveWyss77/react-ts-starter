@@ -16,7 +16,7 @@ interface Props {
 }
 
 interface DispatchProps extends ActionCreatorsMapObject {
-  incrementCounter(): ActionType<never>;
+  incrementCounter(): ActionType<{}>;
   fetchInfo(): ActionType<string>;
 }
 
