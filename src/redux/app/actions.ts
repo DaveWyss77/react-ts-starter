@@ -1,3 +1,4 @@
+import { ActionType } from '../../constants/types';
 import {
   FETCH_INFO,
   FETCH_INFO_ERROR,
@@ -10,7 +11,7 @@ import {
 
 import { LocaleEnum } from '../../constants/enums';
 
-export function switchLanguage(payload: LocaleEnum) {
+export function switchLanguage(payload: LocaleEnum): ActionType<LocaleEnum> {
   return {
     payload,
     type: SWITCH_LANGUAGE
