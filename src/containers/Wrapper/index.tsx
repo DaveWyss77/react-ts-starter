@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import Layout from '../../components/Layout';
 import { RootStateType, ActionType, Dispatch } from '../../constants/types';
@@ -14,7 +13,7 @@ interface Props {
   rightSidebarVisible: boolean;
 }
 
-interface DispatchProps extends ActionCreatorsMapObject {
+interface DispatchProps {
   switchLanguage(payload: LocaleEnum): ActionType<LocaleEnum>;
   toggleRightSidebar(): ActionType<string>;
 }
@@ -26,12 +25,12 @@ const mapStateToProps = (state: RootStateType, ownProps: {}) => {
   };
 };
 
-const actions: DispatchProps = {
-  switchLanguage,
-  toggleRightSidebar
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
+  return {
+    switchLanguage: (payload: LocaleEnum) => dispatch(switchLanguage(payload)),
+    toggleRightSidebar: () => dispatch(toggleRightSidebar())
+  };
 };
-
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
 // tslint:disable-next-line:no-any
 export const wrapped = (WrappedComponent: any): any => {

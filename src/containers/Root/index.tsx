@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
 
 import { fetchInfo, incrementCounter } from '../../redux/app/actions';
 import { ActionType, Dispatch, RootStateType } from '../../constants/types';
@@ -15,24 +14,24 @@ interface Props {
   loading: boolean;
 }
 
-interface DispatchProps extends ActionCreatorsMapObject {
+interface DispatchProps {
   incrementCounter(): ActionType<{}>;
   fetchInfo(): ActionType<string>;
 }
 
-const mapStateToProps = (state: RootStateType, ownProps: {}) => {
+const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
   return {
     counter: state.app.counter,
     loading: state.app.loading
   };
 };
 
-const actions: DispatchProps = {
-  incrementCounter,
-  fetchInfo
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
+  return {
+    incrementCounter: () => dispatch(incrementCounter()),
+    fetchInfo: () => dispatch(fetchInfo())
+  };
 };
-
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(actions, dispatch);
 
 export class Root extends React.Component<Props & DispatchProps> {
 
@@ -57,4 +56,4 @@ export class Root extends React.Component<Props & DispatchProps> {
 
 }
 
-export default wrapped(connect(mapStateToProps, mapDispatchToProps)(Root));
+export default wrapped(connect<Props, DispatchProps, {}>(mapStateToProps, mapDispatchToProps)(Root));
